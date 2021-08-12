@@ -8,6 +8,7 @@ div{
     border: 0;
     outline: 0;
 }
+
 .left {
     width: 10%;
     float: left;
@@ -43,8 +44,6 @@ div{
     font-size:smaller;
     color: darkgray
 }
-
-
 
 .databolck{
     border: 1px solid;

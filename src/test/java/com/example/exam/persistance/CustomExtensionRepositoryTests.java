@@ -3,6 +3,7 @@ package com.example.exam.persistance;
 import com.example.exam.domain.CustomExtension;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -16,59 +17,64 @@ class CustomExtensionRepositoryTests {
     @Autowired
     private CustomExtensionRepository customExtensionRepository;
 
-    @Test
-    @DisplayName("성공적으로 주어진 정보를 저장한다.")
-    public void save() {
-        CustomExtension resource = CustomExtension.builder()
-                .name("aa")
-                .build();
+    @Nested
+    @DisplayName("주어진 정보를 저장한다.")
+    public class create{
 
-        CustomExtension customExtension = customExtensionRepository.save(resource);
-        Assertions.assertEquals(customExtension.getName(), resource.getName());
-    }
+        @Test
+        @DisplayName("성공")
+        public void save() {
+            CustomExtension resource = CustomExtension.builder()
+                    .name("aa")
+                    .build();
 
-    @Test
-    @DisplayName("글자수 초과로 error 반환")
-    public void namingLengthLimit() {
-        CustomExtension customExtension = CustomExtension.builder()
-                .name("asdfjklghasdfjklsdffdsfdsfsghsdfdsfa")
-                .build();
-        Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
-            customExtensionRepository.save(customExtension);
-        });
-    }
+            CustomExtension customExtension = customExtensionRepository.save(resource);
+            Assertions.assertEquals(customExtension.getName(), resource.getName());
+        }
 
-    @Test
-    @DisplayName("한글 입력 error 반환")
-    public void textNotSupported() {
-        CustomExtension customExtension = CustomExtension.builder()
-                .name("ㅁㅁ")
-                .build();
-        Assertions.assertThrows(ConstraintViolationException.class, () -> {
-            customExtensionRepository.save(customExtension);
-        });
-    }
+        @Test
+        @DisplayName("error : 글자수 초과")
+        public void namingLengthLimit() {
+            CustomExtension customExtension = CustomExtension.builder()
+                    .name("asdfjklghasdfjklsdffdsfdsfsghsdfdsfa")
+                    .build();
+            Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
+                customExtensionRepository.save(customExtension);
+            });
+        }
 
-    @Test
-    @DisplayName("숫자 입력 error 반환")
-    public void numberNotSupported() {
-        CustomExtension customExtension = CustomExtension.builder()
-                .name("234324")
-                .build();
-        Assertions.assertThrows(ConstraintViolationException.class, () -> {
-            customExtensionRepository.save(customExtension);
-        });
-    }
+        @Test
+        @DisplayName("error : 한글 입력")
+        public void textNotSupported() {
+            CustomExtension customExtension = CustomExtension.builder()
+                    .name("ㅁㅁ")
+                    .build();
+            Assertions.assertThrows(ConstraintViolationException.class, () -> {
+                customExtensionRepository.save(customExtension);
+            });
+        }
 
-    @Test
-    @DisplayName("특수문자 입력 error 반환")
-    public void SpecialTextNotSupported() {
-        CustomExtension customExtension = CustomExtension.builder()
-                .name("._sdf")
-                .build();
-        Assertions.assertThrows(ConstraintViolationException.class, () -> {
-            customExtensionRepository.save(customExtension);
-        });
+        @Test
+        @DisplayName("error : 숫자 입력")
+        public void numberNotSupported() {
+            CustomExtension customExtension = CustomExtension.builder()
+                    .name("234324")
+                    .build();
+            Assertions.assertThrows(ConstraintViolationException.class, () -> {
+                customExtensionRepository.save(customExtension);
+            });
+        }
+
+        @Test
+        @DisplayName("error : 특수문자 입력")
+        public void SpecialTextNotSupported() {
+            CustomExtension customExtension = CustomExtension.builder()
+                    .name("._sdf")
+                    .build();
+            Assertions.assertThrows(ConstraintViolationException.class, () -> {
+                customExtensionRepository.save(customExtension);
+            });
+        }
     }
 
     @Test
@@ -84,5 +90,4 @@ class CustomExtensionRepositoryTests {
 
         Assertions.assertFalse(customExtensionRepository.findById(1L).isPresent());
     }
-
 }

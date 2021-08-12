@@ -52,7 +52,7 @@ class StartControllerTests {
     }
 
     @Test
-    @DisplayName("DB의 정보를 불러와 화면 출력한다.")
+    @DisplayName("DB의 정보를 객체와 페이지를 넘겨준다.")
     public void init() throws Exception {
         mvc.perform(get("/"))
                 .andExpect(status().is2xxSuccessful())

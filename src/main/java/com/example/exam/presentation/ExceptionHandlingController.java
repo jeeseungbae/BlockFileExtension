@@ -18,31 +18,31 @@ import java.util.Arrays;
 public class ExceptionHandlingController {
 
     @ExceptionHandler(DuplicateNameException.class)
-    public String duplicateHandler(Exception e, Model model) {
+    public String duplicateName(Exception e, Model model) {
         setModel(model, e);
         return "error";
     }
 
     @ExceptionHandler(FixedSameDataException.class)
-    public String FixedSameHandler(Exception e, Model model) {
+    public String fixedSameName(Exception e, Model model) {
         setModel(model, e);
         return "error";
     }
 
     @ExceptionHandler(TooManyResultsException.class)
-    public String TooManySizeHandler(Exception e, Model model) {
+    public String limitNameCount(Exception e, Model model) {
         setModel(model, e);
         return "error";
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public String violationHandler(Exception e, Model model) {
+    public String limitJpaPattern(Exception e, Model model) {
         setModel(model, e);
         return "error";
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public String namingLimitHandler(Exception e, Model model) {
+    public String limitJpaText(Exception e, Model model) {
         setModel(model, e);
         return "error";
     }
