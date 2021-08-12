@@ -34,8 +34,8 @@ Backend
 
 ## 데이터베이스
 - 2개의 Table 설정 ( 고정확장자, 커스텀 확장자 )
-- 고정확장자 : 하나의 레코드 (추가 x) - update 실행
-- 커스텀 확장자 : save, delete 실행
+- 고정확장자 : 하나의 레코드 (추가 x) - update, find 실행
+- 커스텀 확장자 : save, delete, find 실행
 
 ## 설명
 ![화면설계](./src/main/resources/static/img/차단.png)
