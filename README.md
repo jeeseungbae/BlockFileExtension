@@ -9,6 +9,7 @@ Backend
 - `java 8`
 - `springBoot 2.x`
 - `Junit5`
+- `JPA`
 - `H2 Database` => MySQL처럼 사용
 
 ## 요구사항
@@ -39,3 +40,6 @@ Backend
 ## 설명
 ![화면설계](./src/main/resources/static/img/차단.png)
 ![에러페이지](./src/main/resources/static/img/에러페이지.png)
+
+## 실행화면
+![실행화면](./src/main/resources/static/img/실행화면.gif)
