@@ -54,7 +54,7 @@ class CustomExtensionControllerTests {
     @DisplayName("redirection 반환하고 save 실행한다.")
     public void create() throws Exception {
         mvc.perform(post("/custom")
-                        .param("name", "a./a"))
+                        .param("name", "adwa"))
                 .andExpect(status().is3xxRedirection());
 
         verify(customExtensionService).create(anyString());

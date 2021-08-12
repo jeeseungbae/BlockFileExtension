@@ -21,7 +21,7 @@ public class CustomExtensionController {
 
     @PostMapping("/custom")
     public String create(
-            @RequestParam("name") String name) {
+            @RequestParam(value = "name") String name) {
         namingLimit(name);
         customExtensionService.create(name);
         return "redirect:";
