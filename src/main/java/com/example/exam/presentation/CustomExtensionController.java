@@ -22,7 +22,7 @@ public class CustomExtensionController {
     @PostMapping("/custom")
     public String create(
             @RequestParam(value = "name") String name) {
-        namingLimit(name);
+        limitNameCount(name);
         customExtensionService.create(name);
         return "redirect:";
     }
@@ -34,7 +34,7 @@ public class CustomExtensionController {
         return "redirect:";
     }
 
-    private void namingLimit(String name) {
+    private void limitNameCount(String name) {
         if (name.length() > NAMING_LENGTH_LIMIT) {
             throw new DataIntegrityViolationException("20자 이하로 입력해주세요");
         }

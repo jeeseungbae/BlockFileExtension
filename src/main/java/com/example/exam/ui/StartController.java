@@ -21,7 +21,7 @@ public class StartController {
     @GetMapping("")
     private String start(Model model) throws Exception {
         model.addAttribute("custom", new CustomExtension());
-        model.addAttribute("Fixed", fixedExtensionService.findBySeq());
+        model.addAttribute("Fixed", fixedExtensionService.findBySeq()); // default : data.sql
         model.addAttribute("customs", customExtensionService.findAll());
         return "index";
     }

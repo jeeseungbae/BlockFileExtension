@@ -35,7 +35,7 @@ class CustomExtensionServiceTests {
     }
 
     @Nested
-    @DisplayName("Dto를 반환하여 변경한 값을 데이터베이스에 저장한다.")
+    @DisplayName("에러를 체크하고 데이터베이스에 저장한다.")
     public class save {
         @Test
         @DisplayName("성공")
@@ -67,7 +67,7 @@ class CustomExtensionServiceTests {
         @DisplayName("error : 한글 Naming 입력")
         public void nameKorean() {
             Assertions.assertThrows(NamedParametersNotSupportedException.class, () -> {
-                customExtensionService.create("이것을 입력하면 안되오");
+                customExtensionService.create("이것을입력하면안되오");
             });
         }
 

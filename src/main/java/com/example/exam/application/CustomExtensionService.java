@@ -43,40 +43,40 @@ public class CustomExtensionService {
     }
 
     public CustomExtension create(String name) {
-        textPatternCheck(name);
+        namePatternCheck(name);
         CustomExtension customExtension = CustomExtension.builder()
                 .name(name)
                 .build();
         return customExtensionRepository.save(customExtension);
     }
 
-    private void textPatternCheck(String name) {
+    private void namePatternCheck(String name) {
         Pattern namingCheck = Pattern.compile(EXPRESSION);
         Matcher namingMatching = namingCheck.matcher(name);
 
         if (namingMatching.find()) {
-            validationDuplicate(name);
+            namingDuplicateCheck(name);
             return;
         }
         throw new NamedParametersNotSupportedException("잘못된 확장자명 입니다.");
     }
 
-    private void validationDuplicate(String name) {
+    private void namingDuplicateCheck(String name) {
         Optional<CustomExtension> customExtension = customExtensionRepository.findByName(name);
         customExtension.ifPresent(namePresent -> {
             throw new DuplicateNameException("중복된 데이터가 존재합니다.");
         });
-        validationFixed(name);
+        selectFixedExtension(name);
     }
 
-    private void validationFixed(String name) {
+    private void selectFixedExtension(String name) {
         if (fixedNames.contains(name)) {
             throw new FixedSameDataException("고정 확장자에서 선택해주세요");
         }
-        countData();
+        limitDataCount();
     }
 
-    private void countData() {
+    private void limitDataCount() {
         List<CustomExtension> customExtensions = findAll();
         if (customExtensions.size() >= DATA_LIMIT_VOLUME) {
             throw new TooManyResultsException("Data 200개를 초과하였습니다.");
