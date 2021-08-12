@@ -1,0 +1,29 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<div th:fragment="fixed(Fixed)">
+    <hr width="100%" color="black" size="1">
+    <h1> ◎ 파일 확장자 차단</h1>
+    <hr width="100%" color="black" size="3">
+    <h3 style="font-family: Yrsa">파일 확장자에 따라 특정 형식의 파일을 첨부하거나 전송하지 못하도록 제한</h3>
+    <div class="left">
+        <label>고정 확장자</label>
+    </div>
+    <div class="right">
+        <input type='checkbox' th:onclick="|location.href='@{fixedBat(resource=!${Fixed.bat})}'|"
+               th:checked="${Fixed.bat}?'checked'"/>bat
+        <input type='checkbox' th:onclick="|location.href='@{fixedCmd(resource=!${Fixed.cmd})}'|"
+               th:checked="${Fixed.cmd}?'checked'"/>cmd
+        <input type='checkbox' th:onclick="|location.href='@{fixedCom(resource=!${Fixed.com})}'|"
+               th:checked="${Fixed.com}?'checked'"/>com
+        <input type='checkbox' th:onclick="|location.href='@{fixedCpl(resource=!${Fixed.cpl})}'|"
+               th:checked="${Fixed.cpl}?'checked'"/>cpl
+        <input type='checkbox' th:onclick="|location.href='@{fixedExe(resource=!${Fixed.exe})}'|"
+               th:checked="${Fixed.exe}?'checked'"/>exe
+        <input type='checkbox' th:onclick="|location.href='@{fixedScr(resource=!${Fixed.scr})}'|"
+               th:checked="${Fixed.scr}?'checked'"/>scr
+        <input type='checkbox' th:onclick="|location.href='@{fixedJs(resource=!${Fixed.js})}'|"
+               th:checked="${Fixed.js}?'checked'"/>js
+    </div>
+</div>
+</html>

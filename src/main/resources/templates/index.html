@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<!-- head Start-->
+<div th:replace="fragment/head :: head">head</div>
+<!-- head End-->
+
+
+<body>
+<div>
+    <!-- fixed Start-->
+    <div th:replace="fragment/fixed::fixed(${Fixed})"></div>
+    <!-- fixed Start-->
+
+    <!-- custom Start-->
+    <div th:replace="fragment/custom::custom(${custom},${customs})"></div>
+    <!-- custom Start-->
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Error</title>
+</head>
+<body>
+<div>
+    <a style="color: red">요청 처리 과정에서 에러가 발생하였습니다.</a>
+    <button th:onclick="|location.href='@{/}'|"> 이 전</button>
+    <br>
+    <br>
+    에러 메세지 : <a style="color: red" th:text="${Message}"> </a>
+    <br>
+    <br>
+    에러 타입 <a th:text="${Type}"></a>
+</div>
+</body>
+</html>

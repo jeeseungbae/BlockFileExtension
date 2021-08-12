@@ -1,0 +1,30 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<div id="wrap" th:fragment="custom(custom,customs)">
+    <form action="#" th:action="@{/custom}" th:object="${custom}" method="post">
+        <div class="left">
+            <label> 커스텀 확장자</label>
+        </div>
+        <div class="right">
+            <input type="text" th:field="*{name}" size="30" placeholder="확장자 입력"
+                   style="border: 1px solid; border-radius: 5%"
+                   maxlength="20" th:classappend="${#fields.hasErrors('name')}?'is-invalid'">
+            <button class="button-bar" type="submit">+ 추가</button>
+            <br>
+        </div>
+    </form>
+    <div class="right">
+        <div class="context" spellcheck="false">
+            <div class="size">
+                <a th:text="${#lists.size(customs)}"></a>
+                <a>/200</a>
+            </div>
+            <span class="databolck" th:each="data : ${customs}">
+                <span class="dataname" th:text="${data.name}"></span>
+                <a class="delete" th:href="@{customDelete(seq=${data.seq})}">X</a>
+            </span>
+        </div>
+    </div>
+</div>
+</html>
