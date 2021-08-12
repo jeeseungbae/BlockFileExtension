@@ -1,15 +1,13 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org/">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
 <div id="wrap" th:fragment="custom(custom,customs)">
     <form action="#" th:action="@{/custom}" th:object="${custom}" method="post">
         <div class="left">
             <label> 커스텀 확장자</label>
         </div>
         <div class="right">
-            <input type="text" th:field="*{name}" size="30" placeholder="확장자 입력"
+            <input id="data" type="text" th:field="*{name}" size="30" placeholder="확장자 입력"
                    style="border: 1px solid; border-radius: 5%"
                    maxlength="20" required minlength="1">
             <button class="button-bar" type="submit">+ 추가</button>

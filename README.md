@@ -29,6 +29,12 @@ Backend
 ## 추가 기능
 - Exception Handling : 오류페이지 반환
   (이름중복, 빈칸입력, 영어 외의 입력, 데이터 초과, 데이터 길이 초과)
+- 페이지에서 빈칸 입력시 메시지 출력
+
+## 데이터베이스
+- 2개의 Table 설정 ( 고정확장자, 커스텀 확장자 )
+- 고정확장자 : 하나의 레코드 (추가 x) - update 실행
+- 커스텀 확장자 : save, delete 실행
 
 ## 설명
 ![화면설계](./src/main/resources/static/img/차단.png)
